@@ -157,7 +157,7 @@ class Program
     Program program = new Program();
 
     // Variables
-    int[] employeeWeeklyHours = new int[NUMBER_OF_EMPLOYEES];
+    int[] employeeWeeklyHours = new int[NUMBER_OF_EMPLOYEES]; // Data structure 2 - store number of hours worked by each employee, for the week
     Employee[] employeeData = new Employee[NUMBER_OF_EMPLOYEES];
     int week;
     string menuOptionInput;
@@ -236,7 +236,7 @@ class Program
             break;
           case 2:
             int numberOfRecordsToFetch;
-            Console.Write("Enter number of records to fetch: ");
+            Console.Write("Enter number of records to fetch (or 0 to fetch all records): ");
             numberOfRecordsToFetch = int.Parse(Console.ReadLine());
 
             var fetchedRecords = new StringBuilder();
