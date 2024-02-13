@@ -7,7 +7,7 @@ namespace wfh_tracker;
 class Program
 {
   /// <summary>
-  /// Function to validate a user input.
+  /// Function to validate an integer user input.
   /// </summary>
   /// <param name="input">string input</param>
   /// <returns>boolean based on if the string can be converted to an integer</returns>
@@ -15,6 +15,18 @@ class Program
   {
     int temp;
     return int.TryParse(input.ToString(), out temp);
+  }
+
+  /// <summary>
+  /// Function to validate input work hours.
+  /// </summary>
+  /// <param name="input">integer input</param>
+  /// <returns>boolean based on if the number is between 0 and 24</returns>
+  public bool inputHoursValidator(int input)
+  {
+    if (input < 0 || input > 24) return false;
+
+    return true;
   }
 
   /// <summary>
@@ -76,6 +88,7 @@ class Program
     }
     reader.Close();
 
+    // Re-writing the whole file to keep the new records at the top.
     File.WriteAllText(filePath, String.Empty);
     File.AppendAllText(filePath, fileContent.ToString());
   }
@@ -117,7 +130,7 @@ class Program
   /// Displays a summary after a weekly report has been entered.
   /// </summary>
   /// <param name="limit">The number of employees</param>
-  /// <param name="employeeWeeklyHours">Integer array of weeklyu hours worked, per employee</param>
+  /// <param name="employeeWeeklyHours">Integer array of weekly hours worked, per employee</param>
   public void printFullSummary(int limit, int[] employeeWeeklyHours)
   {
     Console.WriteLine("");
@@ -179,7 +192,7 @@ class Program
 
       if (!program.inputValidator(menuOptionInput))
       {
-        Console.WriteLine("Invalid input. Please try again");
+        Console.WriteLine("Invalid input. Please enter a valid option [1, 2 or 3]: ");
       }
       else
       {
@@ -188,37 +201,98 @@ class Program
         switch (menuOption)
         {
           case 1:
+            // Case to input weekly work from home details of every employee; and writing it to a CSV file.
             Console.WriteLine("          * * * Add employee working hours * * *");
             Console.WriteLine("");
-            Console.Write("Enter current working week: ");
-            week = int.Parse(Console.ReadLine());
+            string weekInput = "";
+            bool weakInputValidation;
+            do
+            {
+              Console.Write("Enter current working week: ");
+              weekInput = Console.ReadLine();
+              if (!program.inputValidator(weekInput))
+              {
+                Console.WriteLine("Invalid input. Please enter a valid week number.");
+                weakInputValidation = false;
+              }
+              else
+              {
+                weakInputValidation = true;
+              }
+            } while (!weakInputValidation);
+
+            week = int.Parse(weekInput);
             Console.WriteLine("");
 
             for (int outer = 0; outer < NUMBER_OF_EMPLOYEES; outer++)
             {
               int tempId;
               string tempName;
-              int[] tempHoursWorked = new int[businessDays.Length];
+              List<int> tempHoursWorked = new List<int>();
 
               Console.WriteLine("[Employee " + (outer + 1) + "]");
-              Console.Write("Enter employee " + (outer + 1) + " id: ");
-              tempId = int.Parse(Console.ReadLine());
+
+              string tempIdInput = "";
+              bool tempIdInputValidation;
+              do
+              {
+                Console.Write("Enter employee " + (outer + 1) + " id: ");
+                tempIdInput = Console.ReadLine();
+                if (!program.inputValidator(tempIdInput))
+                {
+                  Console.WriteLine("Invalid input. Please enter a valid number.");
+                  tempIdInputValidation = false;
+                }
+                else
+                {
+                  tempIdInputValidation = true;
+                }
+              } while (!tempIdInputValidation);
+
+              tempId = int.Parse(tempIdInput);
 
               Console.Write("Enter employee " + (outer + 1) + " name: ");
               tempName = Console.ReadLine();
 
+              // Inner for-loop to input work hours for 5 days of the week.
               for (int inner1 = 0; inner1 < businessDays.Length; inner1++)
               {
-                Console.Write("Enter hours worked for " + businessDays[inner1] + ": ");
-                tempHoursWorked[inner1] = int.Parse(Console.ReadLine());
+                string tempHoursWorkedInput = "";
+                bool tempHoursWorkedInputValidation;
+                do
+                {
+                  Console.Write("Enter hours worked for " + businessDays[inner1] + ": ");
+                  tempHoursWorkedInput = Console.ReadLine();
+                  if (!program.inputValidator(tempHoursWorkedInput))
+                  {
+                    Console.WriteLine("Invalid input. Please enter a valid number.");
+                    tempHoursWorkedInputValidation = false;
+                  }
+                  else
+                  {
+                    bool isValidHours = program.inputHoursValidator(int.Parse(tempHoursWorkedInput));
+                    if (!isValidHours)
+                    {
+                      Console.WriteLine("Invalid input. Please enter valid hours (between 0 and 24).");
+                      tempHoursWorkedInputValidation = false;
+                    }
+                    else
+                    {
+                      tempHoursWorkedInputValidation = true;
+                    }
+                  }
+                } while (!tempHoursWorkedInputValidation);
+
+                tempHoursWorked.Add(int.Parse(tempHoursWorkedInput));
               }
 
               Employee obj = new Employee(tempId, tempName, tempHoursWorked);
               employeeData[outer] = obj;
 
+              // Printing hours worked report.
               Console.WriteLine("**************************************");
               Console.WriteLine("Summary for Employee " + (outer + 1));
-              for (int inner2 = 0; inner2 < employeeData[outer].hoursWorked.Length; inner2++)
+              for (int inner2 = 0; inner2 < employeeData[outer].hoursWorked.Count; inner2++)
               {
                 program.printHoursWorkedReport(employeeData[outer].hoursWorked[inner2], businessDays[inner2]);
               }
@@ -230,14 +304,33 @@ class Program
               Console.WriteLine("");
             }
 
+            // Displaying a full summary and saving to a CSV file.
             program.printFullSummary(NUMBER_OF_EMPLOYEES, employeeWeeklyHours);
             program.writeRecords(filePath, employeeData, week, businessDays);
 
             break;
           case 2:
+            // Case to input a number and fetch the corresponding number of records.
+            // If a user enters 0, return all records.
             int numberOfRecordsToFetch;
-            Console.Write("Enter number of records to fetch (or 0 to fetch all records): ");
-            numberOfRecordsToFetch = int.Parse(Console.ReadLine());
+            string numberOfRecordsToFetchInput = "";
+            bool numberOfRecordsToFetchInputValidation;
+            do
+            {
+              Console.Write("Enter number of records to fetch (or 0 to fetch all records): ");
+              numberOfRecordsToFetchInput = Console.ReadLine();
+              if (!program.inputValidator(numberOfRecordsToFetchInput))
+              {
+                Console.WriteLine("Invalid input. Please enter a valid number.");
+                numberOfRecordsToFetchInputValidation = false;
+              }
+              else
+              {
+                numberOfRecordsToFetchInputValidation = true;
+              }
+            } while (!numberOfRecordsToFetchInputValidation);
+
+            numberOfRecordsToFetch = int.Parse(numberOfRecordsToFetchInput);
 
             var fetchedRecords = new StringBuilder();
             fetchedRecords = program.fetchRecords(filePath, numberOfRecordsToFetch);
@@ -253,10 +346,13 @@ class Program
 
             break;
           case 3:
+            // Case exit the program.
             Console.WriteLine("Thank you.");
+            Console.WriteLine("");
+            Console.WriteLine("\u00a9 2024 Phoenix IT Solutions");
             break;
           default:
-            Console.WriteLine("Invalid input. Please try again");
+            Console.WriteLine("Invalid input. Please enter a valid option [1, 2 or 3]");
             break;
         }
       }

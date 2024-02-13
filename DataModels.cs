@@ -4,9 +4,9 @@ namespace wfh_tracker
   {
     public int id;
     public string name;
-    public int[] hoursWorked;
+    public List<int> hoursWorked;
 
-    public Employee(int id, string name, int[] hoursWorked)
+    public Employee(int id, string name, List<int> hoursWorked)
     {
       this.id = id;
       this.name = name;

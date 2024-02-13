@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("wfh_tracker")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fd77651cac7a3291f54b7ef7a6b9eb126f2c8b3a")]
 [assembly: System.Reflection.AssemblyProductAttribute("wfh_tracker")]
 [assembly: System.Reflection.AssemblyTitleAttribute("wfh_tracker")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
