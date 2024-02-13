@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "wfh_tracker/1.0.0": {
+        "runtime": {
+          "wfh_tracker.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "wfh_tracker/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

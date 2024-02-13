@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wfh_tracker", "wfh_tracker.csproj", "{AF1BD39D-52AB-4725-A0F8-142ABB12D92F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wfh_tracker_app", "..\wfh_tracker_app\wfh_tracker_app\wfh_tracker_app.csproj", "{666E837B-8833-4186-BA1F-4CE40F3F8901}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF1BD39D-52AB-4725-A0F8-142ABB12D92F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF1BD39D-52AB-4725-A0F8-142ABB12D92F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF1BD39D-52AB-4725-A0F8-142ABB12D92F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF1BD39D-52AB-4725-A0F8-142ABB12D92F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{666E837B-8833-4186-BA1F-4CE40F3F8901}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{666E837B-8833-4186-BA1F-4CE40F3F8901}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{666E837B-8833-4186-BA1F-4CE40F3F8901}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{666E837B-8833-4186-BA1F-4CE40F3F8901}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CAB3591E-D8D0-4300-82BB-F1D86B64AFF8}
+	EndGlobalSection
+EndGlobal

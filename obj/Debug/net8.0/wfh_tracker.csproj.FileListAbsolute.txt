@@ -1,0 +1,14 @@
+C:\Users\asubr\wfh_tracker\bin\Debug\net8.0\wfh_tracker.exe
+C:\Users\asubr\wfh_tracker\bin\Debug\net8.0\wfh_tracker.deps.json
+C:\Users\asubr\wfh_tracker\bin\Debug\net8.0\wfh_tracker.runtimeconfig.json
+C:\Users\asubr\wfh_tracker\bin\Debug\net8.0\wfh_tracker.dll
+C:\Users\asubr\wfh_tracker\bin\Debug\net8.0\wfh_tracker.pdb
+C:\Users\asubr\wfh_tracker\obj\Debug\net8.0\wfh_tracker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\asubr\wfh_tracker\obj\Debug\net8.0\wfh_tracker.AssemblyInfoInputs.cache
+C:\Users\asubr\wfh_tracker\obj\Debug\net8.0\wfh_tracker.AssemblyInfo.cs
+C:\Users\asubr\wfh_tracker\obj\Debug\net8.0\wfh_tracker.csproj.CoreCompileInputs.cache
+C:\Users\asubr\wfh_tracker\obj\Debug\net8.0\wfh_tracker.dll
+C:\Users\asubr\wfh_tracker\obj\Debug\net8.0\refint\wfh_tracker.dll
+C:\Users\asubr\wfh_tracker\obj\Debug\net8.0\wfh_tracker.pdb
+C:\Users\asubr\wfh_tracker\obj\Debug\net8.0\wfh_tracker.genruntimeconfig.cache
+C:\Users\asubr\wfh_tracker\obj\Debug\net8.0\ref\wfh_tracker.dll
